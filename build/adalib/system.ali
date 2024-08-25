@@ -1,0 +1,57 @@
+V "GNAT Lib v14"
+A -gnatg
+A -mdouble=32
+A -mlong-double=64
+A -mn-flash=6
+A -mskip-bug
+P ZX
+
+RN
+RR NO_ALLOCATORS
+RR NO_ANONYMOUS_ALLOCATORS
+RR NO_ASYNCHRONOUS_CONTROL
+RR NO_CALENDAR
+RR NO_EXCEPTION_PROPAGATION
+RR NO_EXCEPTION_REGISTRATION
+RR NO_FINALIZATION
+RR NO_FLOATING_POINT
+RR NO_IMPLICIT_DYNAMIC_CODE
+RR NO_SECONDARY_STACK
+RR NO_TASKING
+RV NO_IMPLEMENTATION_RESTRICTIONS
+RV NO_OBSOLESCENT_FEATURES
+
+U system%s		system.ads		10b13b67 NE OL PU PK
+
+D system.ads		20240821210837 10b13b67 system%s
+G a e
+X 1 system.ads
+17K9*System 27E4 59l5 59e11
+23M9*Address
+27a4 Run_Time_Name{string}
+28b4 Backend_Divide_Checks{boolean}
+29b4 Backend_Overflow_Checks{boolean}
+30b4 ZCX_By_Default{boolean}
+31b4 Configurable_Run_Time{boolean}
+32b4 Suppress_Standard_Library{boolean}
+33b4 Preallocated_Stacks{boolean}
+34b4 Duration_32_Bits{boolean}
+35b4 Atomic_Sync_Default{boolean}
+36b4 Support_Aggregates{boolean}
+37b4 Support_Atomic_Primitives{boolean}
+38b4 Support_Composite_Assign{boolean}
+39b4 Support_Composite_Compare{boolean}
+40b4 Support_Long_Shifts{boolean}
+41b4 Support_Nondefault_SSO{boolean}
+42b4 Always_Compatible_Rep{boolean}
+43b4 Stack_Check_Probes{boolean}
+44b4 Stack_Check_Limits{boolean}
+45b4 Stack_Check{boolean}
+46b4 Command_Line_Args{boolean}
+47b4 Exit_Status_Supported{boolean}
+48b4 Use_Ada_Main_Program_Name{boolean}
+49b4 Denorm{boolean}
+50b4 Machine_Rounds{boolean}
+51b4 Machine_Overflows{boolean}
+52b4 Signed_Zeros{boolean}
+

@@ -1,0 +1,10 @@
+https://gcc.gnu.org/onlinedocs/gnat_ugn/index.html#SEC_Contents
+https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html
+
+
+avr-gcc -c -Os -mmcu=atmega32 --RTS=build src/main.adb
+avr-gcc -Os -mmcu=atmega32 --RTS=build main.o
+avr-objcopy -O ihex a.out main.hex
+avr-objdump -d  a.out
+avr-gcc -gnatg -c -Ibuild/adainclude/ -I- build/adainclude/system.ads
+avr-ar rcs libgnat.a *.o
