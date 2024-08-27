@@ -10,4 +10,7 @@ avr-gcc -gnatg -c -Ibuild/adainclude/ -I- build/adainclude/system.ads
 avr-ar rcs libgnat.a *.o
 
 
-avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -o main.elf compare.c
+avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -ffunction-sections -fdata-sections -o main.elf compare.c
+
+TODO: Rework LMP instruction
+TODO: Rework Makefile

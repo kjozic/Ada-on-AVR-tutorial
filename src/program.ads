@@ -1,6 +1,7 @@
 with System;
 
 package Program is
+  pragma Preelaborate;
   subtype Unsigned_8 is Integer range 0 .. 255;
   subtype Program_Address is System.Address;
 

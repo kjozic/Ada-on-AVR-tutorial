@@ -7,13 +7,13 @@ COMPILE     = $(BIN)/avr-gcc -Os --RTS=build -mmcu=$(DEVICE)
 all: main.hex main.eep
 
 main.o: src/main.adb src/main.ads
-	$(COMPILE) -c src/main.adb
+	$(COMPILE) -c -ffunction-sections -fdata-sections -gnat2022 src/main.adb
 
 program.o: src/program.adb src/program.ads
-	$(COMPILE) -c src/program.adb
+	$(COMPILE) -c -ffunction-sections -fdata-sections -gnat2022 src/program.adb
 
 a.out: main.o program.o
-	$(COMPILE) -Wl,--gc-sections -Wl,--relax main.o program.o
+	$(COMPILE) -Wl,--gc-sections -Wl,--relax -o main.elf main.o program.o
 
 main.hex: a.out
 	$(BIN)/avr-objcopy -j .text -j .data -O ihex a.out main.hex

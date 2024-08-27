@@ -10,7 +10,7 @@ project Default is
     end Builder;
 
     package Compiler is
-        for Default_Switches ("Ada") use ("-Os", "-mmcu=atmega32");
+        for Default_Switches ("Ada") use ("-Os", "-mmcu=atmega32", "-ffunction-sections", "-fdata-sections", "-gnat2022");
     end Compiler;
 
     package Binder is
