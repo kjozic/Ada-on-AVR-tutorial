@@ -6,10 +6,13 @@ package body Program is
    function Get_Byte (Addr : Program_Address) return Unsigned_8 is
       Result : Unsigned_8;
    begin
+      --  Asm
+      --    ("lpm" & ASCII.LF & "mov %0, r0",
+      --     Outputs => Unsigned_8'Asm_Output ("=r", Result),
+      --     Inputs  => Program_Address'Asm_Input ("z", Addr), Clobber => "r0");
       Asm
-        ("lpm" & ASCII.LF & "mov %0, r0",
-         Outputs => Unsigned_8'Asm_Output ("=r", Result),
-         Inputs  => Program_Address'Asm_Input ("z", Addr), Clobber => "r0");
+        ("lpm %0, Z", Outputs => Unsigned_8'Asm_Output ("=r", Result),
+         Inputs               => Program_Address'Asm_Input ("z", Addr));
       return Result;
    end Get_Byte;
 
