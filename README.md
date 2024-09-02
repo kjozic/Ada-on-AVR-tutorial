@@ -6,7 +6,7 @@ This tutorial will show you how to set up compiler infrastructure, write a minim
 
 ## Compiler and build system
 
-Download and unpack GCC compiler (`gnat-avr-elf-*.tar.gz`) and GPRbuild tool (`gprbuild-*.tar.gz`) from Alire [builds][1]. Set them on the PATH of your operating system.
+Download and unpack GCC compiler (`gnat-avr-elf-*.tar.gz`) and GPRbuild tool (`gprbuild-*.tar.gz`) from [Alire builds][1]. Set them on the PATH of your operating system.
 
 **Note:** Please use GCC and GPRbuild from the same source because there is a high probability that GPRbuild won't recognize your GCC compiler if installed from different source.
 
@@ -92,9 +92,9 @@ ISR(TIMER0_OVF_vect) {
 
 ## References
 
-- [1]: https://github.com/alire-project/GNAT-FSF-builds/releases (Alire builds)
-- [2]: https://docs.adacore.com/gnat_rm-docs/html/gnat_rm/gnat_rm.html (GNAT Reference Manual)
-- [3]: https://docs.adacore.com/gnat_ugn-docs/html/gnat_ugn/gnat_ugn.html (GNAT User’s Guide for Native Platforms)
-- [4]: https://docs.adacore.com/live/wave/gnat_ugx/html/gnat_ugx/gnat_ugx.html (GNAT User’s Guide Supplement for Cross Platforms)
-- [5]: https://github.com/gcc-mirror/gcc/tree/master/gcc/ada (GCC source code)
-- [6]: https://gcc.gnu.org/onlinedocs/gcc/AVR-Built-in-Functions.html (GCC AVR Built-in Functions)
+- [1]: <https://github.com/alire-project/GNAT-FSF-builds/releases> (Alire builds)
+- [2]: <https://docs.adacore.com/gnat_rm-docs/html/gnat_rm/gnat_rm.html> (GNAT Reference Manual)
+- [3]: <https://docs.adacore.com/gnat_ugn-docs/html/gnat_ugn/gnat_ugn.html> (GNAT User’s Guide for Native Platforms)
+- [4]: <https://docs.adacore.com/live/wave/gnat_ugx/html/gnat_ugx/gnat_ugx.html> (GNAT User’s Guide Supplement for Cross Platforms)
+- [5]: <https://github.com/gcc-mirror/gcc/tree/master/gcc/ada> (GCC source code)
+- [6]: <https://gcc.gnu.org/onlinedocs/gcc/AVR-Built-in-Functions.html> (GCC AVR Built-in Functions)
