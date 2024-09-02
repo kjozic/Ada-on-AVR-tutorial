@@ -57,7 +57,85 @@ To compile system files, execute the command `avr-gcc -gnatg -c -Ibuild/adainclu
 
 ## Test program
 
-## Comparism with C
+Although the test program is rather small, it demonstrates the following functionalities:
+
+- Access variables from flash memory
+- Implement an interrupt handler
+- Use the GCC C library's built-in functions
+- Use the C runtime to set up interrupt vector table and startup code
+
+To build a test program, you have to write a `default.gpr` file and execute the `gprbuild` command. To clean files from the build stage, execute the `gprclean` command.
+
+### default.gpr file which does not optimize executable file size
+
+This is a minimal configuration that produces a correct, but non-optimal executable file.
+
+```text
+project Default is
+    for Source_Dirs use ("src");
+    for Object_Dir use "obj";
+    for Main use ("main.adb");
+    for Runtime("Ada") use "build";
+    for Target use "avr-elf";
+
+    package Builder is
+        for Executable_Suffix use ".elf";
+    end Builder;
+
+    package Compiler is
+        for Default_Switches ("Ada") use ("-Os", "-mmcu=atmega32", "-gnat2022");
+    end Compiler;
+
+    package Linker is
+        for Default_Switches ("Ada") use ("-lgcc", "-mmcu=atmega32");
+    end Linker;
+end Default;
+```
+
+**NOTE:** Compiler based on the `-mmcu` switch uses C run time library (CRT) to set up interrupt vector table and startup code (in this case it used `crtatmega32.o` which comes with the compiler).
+
+### default.gpr file which produces minimal compiled executable file
+
+Because AVR is a constrained architecture, you will probably want to produce a small executable file.
+
+```text
+project Default is
+    for Source_Dirs use ("src");
+    for Object_Dir use "obj";
+    for Main use ("main.adb");
+    for Runtime("Ada") use "build";
+    for Target use "avr-elf";
+
+    package Builder is
+        for Executable_Suffix use ".elf";
+    end Builder;
+
+    package Compiler is
+        for Default_Switches ("Ada") use ("-Os", "-mmcu=atmega32", "-ffunction-sections", "-fdata-sections", "-gnat2022");
+    end Compiler;
+
+    package Binder is
+        for Default_Switches ("Ada") use ("-minimal");
+    end Binder;
+
+    package Linker is
+        for Default_Switches ("Ada") use ("-lgcc", "-mmcu=atmega32", "-Wl,--gc-sections", "-Wl,--relax");
+    end Linker;
+end Default;
+```
+
+**NOTE:** Never use the `-nostdlib` compiler switch (although almost all tutorials on the Internet recommend that) because GCC won't insert code for interrupt vector table and startup code.
+
+### Final actions before flashing the MCU
+
+```bash
+avr-objdump -Pmem-usage obj/main.elf                                                #Get EEPROM, flash, and RAM usage
+avr-objdump -d obj/main.elf                                                         #Disassemble code
+avr-objcopy -j .text -j .data -O ihex obj/main.elf main.hex                         #Convert .elf to .hex file
+avrdude -c usbasp -p m32 -U lfuse:w:0xff:m -U hfuse:w:0xc9:m -U flash:w:main.hex:i  #Flash .hex file to the MCU
+```
+
+## Comparism with C program
 
 Equivalent C program is:
 
@@ -89,3 +167,5 @@ int main() {
 ISR(TIMER0_OVF_vect) {
 }
 ```
+
+Compile it with the command: `avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -ffunction-sections -fdata-sections -o main.elf compare.c`.
