@@ -17,11 +17,9 @@ pragma Restrictions (No_Tasking);
 package System is
    --  Program unit level restrictions
    pragma Pure;
-   --  pragma No_Elaboration_Code;
-   --  pragma No_Obsolescent_Features;
 
+   --  We need this type to access the address of a variable
    type Address is mod 65_536;
-   --  subtype Program_Address is Address;
 private
    --  System private part
    Run_Time_Name             : constant String  := "Minimal AVR Runtime";
@@ -50,10 +48,4 @@ private
    Machine_Rounds            : constant Boolean := True;
    Machine_Overflows         : constant Boolean := False;
    Signed_Zeros              : constant Boolean := True;
-   --  Outdated stuff - need to be checked
-   --  Duration_Delta_Microseconds : constant         := 1_000;
-   --  Fractional_Fixed_Ops        : constant Boolean := False;
-   --  Frontend_Layout             : constant Boolean := False;
-   --  Frontend_Exceptions         : constant Boolean := False;
-   --  GCC_ZCX_Support             : constant Boolean := False;
 end System;

@@ -8,30 +8,24 @@ P ZX
 
 RN
 
-U system.machine_code%s	s-maccod.ads		f4a3dbde NE OL PU PK
+U system.machine_code%s	s-maccod.ads		4e347b2d NE OL PU PK
 W system%s		system.ads		system.ali
 
-D system.ads		20240821210837 10b13b67 system%s
-D s-maccod.ads		20240821205459 e412e0b9 system.machine_code%s
+D system.ads		20240903203709 10b13b67 system%s
+D s-maccod.ads		20240903203940 5e85404a system.machine_code%s
 G a e
-G c Z s s [asm system__machine_code 29 14 none]
-G c Z s s [asm_input_operand_listIP system__machine_code 12 9 none]
-G c Z s s [asm_output_operand_listIP system__machine_code 15 9 none]
+G c Z s s [asm system__machine_code 8 14 none]
 X 1 system.ads
-17K9*System 59e11 2|1r9 99r5
+17K9*System 51e11 2|1r9 23r5
 X 2 s-maccod.ads
-1K16*Machine_Code 1|17k9 2|90E9 99l12 99e24
-4I9*Asm_Input_Operand<integer> 9r34 13r34 32r30 90c9 96r34
-5I9*Asm_Output_Operand<integer> 10r34 16r34 31r30 91c9 97r34
-9i4*No_Input_Operands{4I9} 96c4
-10i4*No_Output_Operands{5I9} 97c4
-12A9*Asm_Input_Operand_List(4I9)<integer>
-15A9*Asm_Output_Operand_List(5I9)<integer>
-18I9*Asm_Insn<integer> 92c9
-29U14*Asm 30>19 31>19 32>19 33>19 34>19 86b30
-30a19 Template{string}
-31i19 Outputs{5I9}
-32i19 Inputs{4I9}
-33a19 Clobber{string}
-34b19 Volatile{boolean}
+1K16*Machine_Code 1|17k9 2|20E9 23l12 23e24
+4I9*Asm_Input_Operand<integer> 11r18 20c9
+5I9*Asm_Output_Operand<integer> 10r17 21c9
+6I9*Asm_Insn<integer> 22c9
+8U14*Asm 9>7 10>7 11>7 12>7 13>7 16b30
+9a7 Template{string}
+10i7 Outputs{5I9}
+11i7 Inputs{4I9}
+12a7 Clobber{string}
+13b7 Volatile{boolean}
 

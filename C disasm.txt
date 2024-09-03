@@ -27,7 +27,7 @@ Disassembly of section .text:
   26:	00 00       	nop
   28:	1e c0       	rjmp	.+60     	; 0x66 <__bad_interrupt>
   2a:	00 00       	nop
-  2c:	25 c0       	rjmp	.+74     	; 0x78 <__vector_11>
+  2c:	26 c0       	rjmp	.+76     	; 0x7a <__vector_11>
   2e:	00 00       	nop
   30:	1a c0       	rjmp	.+52     	; 0x66 <__bad_interrupt>
   32:	00 00       	nop
@@ -58,7 +58,7 @@ Disassembly of section .text:
   5c:	d8 e0       	ldi	r29, 0x08	; 8
   5e:	de bf       	out	0x3e, r29	; 62
   60:	cd bf       	out	0x3d, r28	; 61
-  62:	0b d0       	rcall	.+22     	; 0x7a <main>
+  62:	0a d0       	rcall	.+20     	; 0x78 <main>
   64:	0b c0       	rjmp	.+22     	; 0x7c <_exit>
 
 00000066 <__bad_interrupt>:
@@ -76,11 +76,11 @@ Disassembly of section .text:
 00000076 <.L2>:
   76:	ff cf       	rjmp	.-2      	; 0x76 <.L2>
 
-00000078 <__vector_11>:
-  78:	18 95       	reti
+00000078 <main>:
+  78:	f7 df       	rcall	.-18     	; 0x68 <test>
 
-0000007a <main>:
-  7a:	f6 df       	rcall	.-20     	; 0x68 <test>
+0000007a <__vector_11>:
+  7a:	18 95       	reti
 
 0000007c <_exit>:
   7c:	f8 94       	cli

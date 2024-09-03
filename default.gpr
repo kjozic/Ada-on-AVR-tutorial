@@ -15,7 +15,6 @@ project Default is
 
     package Binder is
         for Default_Switches ("Ada") use ("-minimal");
-        -- for Default_Switches ("Ada") use ("-n");
     end Binder;
 
     package Linker is

@@ -27,7 +27,7 @@ Disassembly of section .text:
   26:	00 00       	nop
   28:	29 c0       	rjmp	.+82     	; 0x7c <__bad_interrupt>
   2a:	00 00       	nop
-  2c:	29 c0       	rjmp	.+82     	; 0x80 <__vector_11>
+  2c:	35 c0       	rjmp	.+106    	; 0x98 <__vector_11>
   2e:	00 00       	nop
   30:	25 c0       	rjmp	.+74     	; 0x7c <__bad_interrupt>
   32:	00 00       	nop
@@ -69,7 +69,7 @@ Disassembly of section .text:
   66:	b0 e0       	ldi	r27, 0x00	; 0
 
 00000068 <.Loc.3>:
-  68:	e8 e9       	ldi	r30, 0x98	; 152
+  68:	ee ea       	ldi	r30, 0xAE	; 174
 
 0000006a <.Loc.4>:
   6a:	f0 e0       	ldi	r31, 0x00	; 0
@@ -84,7 +84,7 @@ Disassembly of section .text:
   70:	0d 92       	st	X+, r0
 
 00000072 <.L__do_copy_data_start>:
-  72:	a0 36       	cpi	r26, 0x60	; 96
+  72:	a2 36       	cpi	r26, 0x62	; 98
 
 00000074 <.Loc.9>:
   74:	b1 07       	cpc	r27, r17
@@ -93,33 +93,44 @@ Disassembly of section .text:
   76:	d9 f7       	brne	.-10     	; 0x6e <.L__do_copy_data_loop>
 
 00000078 <L0^A>:
-  78:	02 d0       	rcall	.+4      	; 0x7e <main>
-  7a:	0c c0       	rjmp	.+24     	; 0x94 <_exit>
+  78:	0d d0       	rcall	.+26     	; 0x94 <main>
+  7a:	17 c0       	rjmp	.+46     	; 0xaa <_exit>
 
 0000007c <__bad_interrupt>:
   7c:	c1 cf       	rjmp	.-126    	; 0x0 <__vectors>
 
-0000007e <main>:
-  7e:	01 c0       	rjmp	.+2      	; 0x82 <program__main>
+0000007e <_ada_main>:
+  7e:	0d c0       	rjmp	.+26     	; 0x9a <program__main>
 
-00000080 <__vector_11>:
-  80:	18 95       	reti
+00000080 <adainit>:
+  80:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <main_E>
+  84:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <main_E+0x1>
+  88:	01 96       	adiw	r24, 0x01	; 1
+  8a:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <main_E+0x1>
+  8e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <main_E>
+  92:	08 95       	ret
 
-00000082 <program__main>:
-  82:	8f ef       	ldi	r24, 0xFF	; 255
-  84:	87 bb       	out	0x17, r24	; 23
-  86:	e4 e5       	ldi	r30, 0x54	; 84
-  88:	f0 e0       	ldi	r31, 0x00	; 0
-  8a:	c8 95       	lpm
-  8c:	e0 2d       	mov	r30, r0
-  8e:	e8 bb       	out	0x18, r30	; 24
-  90:	78 94       	sei
+00000094 <main>:
+  94:	f5 df       	rcall	.-22     	; 0x80 <adainit>
+  96:	f3 cf       	rjmp	.-26     	; 0x7e <_ada_main>
 
-00000092 <.L4>:
-  92:	ff cf       	rjmp	.-2      	; 0x92 <.L4>
+00000098 <__vector_11>:
+  98:	18 95       	reti
 
-00000094 <_exit>:
-  94:	f8 94       	cli
+0000009a <program__main>:
+  9a:	8f ef       	ldi	r24, 0xFF	; 255
+  9c:	87 bb       	out	0x17, r24	; 23
+  9e:	e4 e5       	ldi	r30, 0x54	; 84
+  a0:	f0 e0       	ldi	r31, 0x00	; 0
+  a2:	e4 91       	lpm	r30, Z
+  a4:	e8 bb       	out	0x18, r30	; 24
+  a6:	78 94       	sei
 
-00000096 <__stop_program>:
-  96:	ff cf       	rjmp	.-2      	; 0x96 <__stop_program>
+000000a8 <.L4>:
+  a8:	ff cf       	rjmp	.-2      	; 0xa8 <.L4>
+
+000000aa <_exit>:
+  aa:	f8 94       	cli
+
+000000ac <__stop_program>:
+  ac:	ff cf       	rjmp	.-2      	; 0xac <__stop_program>

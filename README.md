@@ -154,7 +154,7 @@ avrdude -c usbasp -p m32 -U lfuse:w:0xff:m -U hfuse:w:0xc9:m -U flash:w:main.hex
 
 ## Comparism with C program
 
-Equivalent C program is:
+### Equivalent C program
 
 ```C
 #define F_CPU 8'000'000UL
@@ -187,8 +187,19 @@ ISR(TIMER0_OVF_vect) {
 
 Compile it with the command: `avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -ffunction-sections -fdata-sections -o main.elf compare.c`.
 
+### Program sizes
+
+| Language | Flash usage | RAM usage |
+|----------|-------------|-----------|
+| Ada      | 176         | 2         |
+| C        | 128         | 0         |
+
+If we compare sizes, we can see that Ada uses only 48 bytes more in flash storage and 2 bytes more in RAM. If we compare disassembled  code, we can see that the interrupt vector table is the same (except they have different offsets) and that our code is identical. The only difference is that Ada has more startup code, which is a consequence of the way Ada elaboration works.
+
+If you are worried about Ada performance, don't be because the same compiler generates code from both languages, and the resulting code will be very similar if not identical (as we can see in this example). If you are concerned about code size and performance in critical sections (interrupt handlers), you can always disable Ada generated checks with the usage of an appropriate pragma.
+
 ## Learning resources
 
 For more complete Run Time System, library, and examples, you can visit [Rolf Ebert's GitHub page](https://github.com/RREE).
 
-For more detailed studies, you can visit [Adacore's learning resources](https://learn.adacore.com/index.html1).
+For more detailed studies, you can visit [Adacore's learning resources](https://learn.adacore.com/index.html).
