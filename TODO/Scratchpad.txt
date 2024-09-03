@@ -1,16 +1,12 @@
+Links:
 https://gcc.gnu.org/onlinedocs/gnat_ugn/index.html#SEC_Contents
 https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html
 
-
+Commands:
 avr-gcc -c -Os -mmcu=atmega32 --RTS=build src/main.adb
 avr-gcc -Os -mmcu=atmega32 --RTS=build main.o
 avr-objcopy -O ihex a.out main.hex
 avr-objdump -d  a.out
 avr-gcc -gnatg -c -Ibuild/adainclude/ -I- build/adainclude/system.ads
 avr-ar rcs libgnat.a *.o
-
-
 avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -ffunction-sections -fdata-sections -o main.elf compare.c
-
-TODO: Rework LMP instruction
-TODO: Rework Makefile

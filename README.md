@@ -190,4 +190,5 @@ Compile it with the command: `avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu
 ## Learning resources
 
 For more complete Run Time System, library, and examples, you can visit [Rolf Ebert's GitHub page](https://github.com/RREE).
+
 For more detailed studies, you can visit [Adacore's learning resources](https://learn.adacore.com/index.html1).
