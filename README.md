@@ -31,7 +31,7 @@ Every Ada program requires a runtime system, regardless if it is being run on an
 
 ### system.ads
 
-system.ads consists of 4 sections:
+system.ads consists of the following sections:
 
 - Configuration pragmas
 - Restriction pragmas
@@ -68,7 +68,7 @@ To build a test program, you have to write a `default.gpr` file and execute the 
 
 ### default.gpr file which does not optimize executable file size
 
-This is a minimal configuration that produces a correct, but non-optimal executable file.
+This is a minimal configuration that produces a correct, but non-optimal executable file. For .gpr file structure and switches, please consult [GPR Tools User's Guide](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug.html) and [GNAT User’s Guide for Native Platforms](https://docs.adacore.com/gnat_ugn-docs/html/gnat_ugn/gnat_ugn.html).
 
 ```text
 project Default is
@@ -128,11 +128,28 @@ end Default;
 
 ### Final actions before flashing the MCU
 
+Get EEPROM, flash, and RAM usage:
+
 ```bash
-avr-objdump -Pmem-usage obj/main.elf                                                #Get EEPROM, flash, and RAM usage
-avr-objdump -d obj/main.elf                                                         #Disassemble code
-avr-objcopy -j .text -j .data -O ihex obj/main.elf main.hex                         #Convert .elf to .hex file
-avrdude -c usbasp -p m32 -U lfuse:w:0xff:m -U hfuse:w:0xc9:m -U flash:w:main.hex:i  #Flash .hex file to the MCU
+avr-objdump -Pmem-usage obj/main.elf
+```
+
+Disassemble code:
+
+```bash
+avr-objdump -d obj/main.elf
+```
+
+Convert .elf to .hex file:
+
+```bash
+avr-objcopy -j .text -j .data -O ihex obj/main.elf main.hex
+```
+
+Flash .hex file to the MCU:
+
+```bash
+avrdude -c usbasp -p m32 -U lfuse:w:0xff:m -U hfuse:w:0xc9:m -U flash:w:main.hex:i
 ```
 
 ## Comparism with C program
@@ -169,3 +186,8 @@ ISR(TIMER0_OVF_vect) {
 ```
 
 Compile it with the command: `avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -ffunction-sections -fdata-sections -o main.elf compare.c`.
+
+## Learning resources
+
+For more complete Run Time System, library, and examples, you can visit [Rolf Ebert's GitHub page](https://github.com/RREE).
+For more detailed studies, you can visit [Adacore's learning resources](https://learn.adacore.com/index.html1).
