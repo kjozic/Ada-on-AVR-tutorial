@@ -11,14 +11,25 @@ package Program is
   DDRB : Integer range 0 .. 255 with
    Address => 16#37#, Size => 8, Volatile => True;
 
-  State1 : Unsigned_8 := 171 with
+  ProgmemVar : Unsigned_8 := 171 with
    Linker_Section => ".progmem.data";
 
   function Get_Byte (Addr : Program_Address) return Unsigned_8;
+
   procedure Receive_Handler;
   pragma Machine_Attribute
    (Entity => Receive_Handler, Attribute_Name => "signal");
   pragma Export (C, Receive_Handler, "__vector_11");
 
+  procedure sei;
+  procedure cli;
   procedure Main;
+
+private
+
+  pragma Inline_Always (sei);
+  pragma Inline_Always (cli);
+
+  pragma Import (Intrinsic, sei, "__builtin_avr_sei");
+  pragma Import (Intrinsic, cli, "__builtin_avr_cli");
 end Program;
