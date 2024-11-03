@@ -169,16 +169,12 @@ avrdude -c usbasp -p m32 -U lfuse:w:0xff:m -U hfuse:w:0xc9:m -U flash:w:main.hex
 
 const uint8_t mydata PROGMEM = 171;
 
-void test() {
+int main() {
     DDRB = 0xFF;
     PORTB = pgm_read_byte(&mydata);
     sei();
 
     while (1) {}
-}
-
-int main() {
-    test();
 }
 
 ISR(TIMER0_OVF_vect) {
@@ -192,7 +188,7 @@ Compile it with the command: `avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu
 | Language | Flash usage | RAM usage |
 |----------|-------------|-----------|
 | Ada      | 176         | 2         |
-| C        | 128         | 0         |
+| C        | 126         | 0         |
 
 If we compare sizes, we can see that Ada uses only 48 bytes more in flash storage and 2 bytes more in RAM. If we compare disassembled  code, we can see that the interrupt vector table is the same (except they have different offsets) and that our code is identical. The only difference is that Ada has more startup code, which is a consequence of the way Ada elaboration works.
 
