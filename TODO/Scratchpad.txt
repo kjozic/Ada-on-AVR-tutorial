@@ -20,3 +20,4 @@ avr-gcc -gnatg -nostdinc -nostartfiles -nostdlib -nodefaultlibs -nolibc -Os -mmc
 avr-gcc -gnatg -nostdinc -nostartfiles -nostdlib -nodefaultlibs -nolibc -lgcc -mmcu=atmega32 -ffunction-sections -fdata-sections -gnat2022 -Wl,--gc-sections -Wl,--relax -minimal *.o
 avr-gcc -Os -mmcu=atmega32 -ffunction-sections -fdata-sections -gnat2022 -Wl,--gc-sections -Wl,--relax -n -c --RTS=build/ src/program.adb
 -Wl,--defsym,__do_copy_data=0
+"-lgcc", 

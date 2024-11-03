@@ -27,7 +27,7 @@ Disassembly of section .text:
   26:	00 00       	nop
   28:	1e c0       	rjmp	.+60     	; 0x66 <__bad_interrupt>
   2a:	00 00       	nop
-  2c:	27 c0       	rjmp	.+78     	; 0x7c <__vector_11>
+  2c:	26 c0       	rjmp	.+76     	; 0x7a <__vector_11>
   2e:	00 00       	nop
   30:	1a c0       	rjmp	.+52     	; 0x66 <__bad_interrupt>
   32:	00 00       	nop
@@ -59,37 +59,31 @@ Disassembly of section .text:
   5e:	de bf       	out	0x3e, r29	; 62
   60:	cd bf       	out	0x3d, r28	; 61
   62:	02 d0       	rcall	.+4      	; 0x68 <main>
-  64:	0c c0       	rjmp	.+24     	; 0x7e <_exit>
+  64:	0b c0       	rjmp	.+22     	; 0x7c <_exit>
 
 00000066 <__bad_interrupt>:
   66:	cc cf       	rjmp	.-104    	; 0x0 <__vectors>
 
 00000068 <main>:
-  68:	01 d0       	rcall	.+2      	; 0x6c <program__main>
-  6a:	0b c0       	rjmp	.+22     	; 0x82 <_etext>
+  68:	00 c0       	rjmp	.+0      	; 0x6a <program__main>
 
-0000006c <program__main>:
-  6c:	8f ef       	ldi	r24, 0xFF	; 255
-  6e:	87 bb       	out	0x17, r24	; 23
-  70:	e4 e5       	ldi	r30, 0x54	; 84
-  72:	f0 e0       	ldi	r31, 0x00	; 0
-  74:	e4 91       	lpm	r30, Z
-  76:	e8 bb       	out	0x18, r30	; 24
-  78:	78 94       	sei
+0000006a <program__main>:
+  6a:	8f ef       	ldi	r24, 0xFF	; 255
+  6c:	87 bb       	out	0x17, r24	; 23
+  6e:	e4 e5       	ldi	r30, 0x54	; 84
+  70:	f0 e0       	ldi	r31, 0x00	; 0
+  72:	e4 91       	lpm	r30, Z
+  74:	e8 bb       	out	0x18, r30	; 24
+  76:	78 94       	sei
 
-0000007a <.L3>:
-  7a:	ff cf       	rjmp	.-2      	; 0x7a <.L3>
+00000078 <.L3>:
+  78:	ff cf       	rjmp	.-2      	; 0x78 <.L3>
 
-0000007c <__vector_11>:
-  7c:	18 95       	reti
+0000007a <__vector_11>:
+  7a:	18 95       	reti
 
-0000007e <_exit>:
-  7e:	f8 94       	cli
+0000007c <_exit>:
+  7c:	f8 94       	cli
 
-00000080 <__stop_program>:
-  80:	ff cf       	rjmp	.-2      	; 0x80 <__stop_program>
-
-Disassembly of section .garbage:
-
-00000082 <__do_copy_data>:
-  82:	08 95       	ret
+0000007e <__stop_program>:
+  7e:	ff cf       	rjmp	.-2      	; 0x7e <__stop_program>

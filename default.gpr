@@ -18,6 +18,6 @@ project Default is
     end Binder;
 
     package Linker is
-        for Default_Switches ("Ada") use ("-lgcc", "-mmcu=atmega32", "-Wl,--gc-sections", "-Wl,--relax");
+        for Default_Switches ("Ada") use ("-mmcu=atmega32", "-Wl,--gc-sections", "-Wl,--relax", "-Wl,--defsym,__do_copy_data=0");
     end Linker;
 end Default;
