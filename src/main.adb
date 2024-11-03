@@ -2,5 +2,5 @@ with Program;
 
 procedure Main is
 begin
-    Program.Main;
+   Program.Main;
 end Main;

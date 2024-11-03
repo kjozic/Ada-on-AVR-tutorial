@@ -1,2 +1,2 @@
 procedure Main;
---  pragma Export (C, Main, "main");
+pragma Export (C, Main, "main");

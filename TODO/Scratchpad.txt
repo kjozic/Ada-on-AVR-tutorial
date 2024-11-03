@@ -10,3 +10,12 @@ avr-objdump -d  a.out
 avr-gcc -gnatg -c -Ibuild/adainclude/ -I- build/adainclude/system.ads
 avr-ar rcs libgnat.a *.o
 avr-gcc -Os -Wall -Wextra -std=c23 -pedantic -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -ffunction-sections -fdata-sections -o main.elf compare.c
+
+
+
+avr-gcc -gnatg -gnaty0 -Os -mmcu=atmega32 -ffunction-sections -fdata-sections -gnat2022 -n -c -I../build/adainclude/ *.adb
+avr-gcc -gnatg -lgcc -mmcu=atmega32 -Wl,--gc-sections -Wl,--relax -minimal *.o
+
+avr-gcc -gnatg -nostdinc -nostartfiles -nostdlib -nodefaultlibs -nolibc -Os -mmcu=atmega32 -ffunction-sections -fdata-sections -gnat2022 -Wl,--gc-sections -Wl,--relax -n -c -Ibuild/adainclude/ build/adainclude/*.adb
+avr-gcc -gnatg -nostdinc -nostartfiles -nostdlib -nodefaultlibs -nolibc -lgcc -mmcu=atmega32 -ffunction-sections -fdata-sections -gnat2022 -Wl,--gc-sections -Wl,--relax -minimal *.o
+avr-gcc -Os -mmcu=atmega32 -ffunction-sections -fdata-sections -gnat2022 -Wl,--gc-sections -Wl,--relax -n -c --RTS=build/ src/program.adb
