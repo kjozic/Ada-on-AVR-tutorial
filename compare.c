@@ -4,20 +4,22 @@
 #define __AVR_ATmega32__
 #endif
 
-
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 
-
 const uint8_t mydata PROGMEM = 171;
 
-int main() {
+void program_main() {
     DDRB = 0xFF;
     PORTB = pgm_read_byte(&mydata);
     sei();
 
     while (1) {}
+}
+
+int main() {
+    program_main();    
 }
 
 ISR(TIMER0_OVF_vect) {

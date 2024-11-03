@@ -11,11 +11,6 @@ package body Program is
       return Result;
    end Get_Byte;
 
-   procedure Receive_Handler is
-   begin
-      null;
-   end Receive_Handler;
-
    procedure Main is
    begin
       DDRB  := 255;
@@ -27,4 +22,9 @@ package body Program is
          null;
       end loop;
    end Main;
+
+   procedure Receive_Handler is
+   begin
+      null;
+   end Receive_Handler;
 end Program;
