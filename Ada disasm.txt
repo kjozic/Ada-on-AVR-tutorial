@@ -7,48 +7,48 @@ Disassembly of section .text:
 00000000 <__vectors>:
    0:	2a c0       	rjmp	.+84     	; 0x56 <__ctors_end>
    2:	00 00       	nop
-   4:	3b c0       	rjmp	.+118    	; 0x7c <__bad_interrupt>
+   4:	30 c0       	rjmp	.+96     	; 0x66 <__bad_interrupt>
    6:	00 00       	nop
-   8:	39 c0       	rjmp	.+114    	; 0x7c <__bad_interrupt>
+   8:	2e c0       	rjmp	.+92     	; 0x66 <__bad_interrupt>
    a:	00 00       	nop
-   c:	37 c0       	rjmp	.+110    	; 0x7c <__bad_interrupt>
+   c:	2c c0       	rjmp	.+88     	; 0x66 <__bad_interrupt>
    e:	00 00       	nop
-  10:	35 c0       	rjmp	.+106    	; 0x7c <__bad_interrupt>
+  10:	2a c0       	rjmp	.+84     	; 0x66 <__bad_interrupt>
   12:	00 00       	nop
-  14:	33 c0       	rjmp	.+102    	; 0x7c <__bad_interrupt>
+  14:	28 c0       	rjmp	.+80     	; 0x66 <__bad_interrupt>
   16:	00 00       	nop
-  18:	31 c0       	rjmp	.+98     	; 0x7c <__bad_interrupt>
+  18:	26 c0       	rjmp	.+76     	; 0x66 <__bad_interrupt>
   1a:	00 00       	nop
-  1c:	2f c0       	rjmp	.+94     	; 0x7c <__bad_interrupt>
+  1c:	24 c0       	rjmp	.+72     	; 0x66 <__bad_interrupt>
   1e:	00 00       	nop
-  20:	2d c0       	rjmp	.+90     	; 0x7c <__bad_interrupt>
+  20:	22 c0       	rjmp	.+68     	; 0x66 <__bad_interrupt>
   22:	00 00       	nop
-  24:	2b c0       	rjmp	.+86     	; 0x7c <__bad_interrupt>
+  24:	20 c0       	rjmp	.+64     	; 0x66 <__bad_interrupt>
   26:	00 00       	nop
-  28:	29 c0       	rjmp	.+82     	; 0x7c <__bad_interrupt>
+  28:	1e c0       	rjmp	.+60     	; 0x66 <__bad_interrupt>
   2a:	00 00       	nop
-  2c:	35 c0       	rjmp	.+106    	; 0x98 <__vector_11>
+  2c:	27 c0       	rjmp	.+78     	; 0x7c <__vector_11>
   2e:	00 00       	nop
-  30:	25 c0       	rjmp	.+74     	; 0x7c <__bad_interrupt>
+  30:	1a c0       	rjmp	.+52     	; 0x66 <__bad_interrupt>
   32:	00 00       	nop
-  34:	23 c0       	rjmp	.+70     	; 0x7c <__bad_interrupt>
+  34:	18 c0       	rjmp	.+48     	; 0x66 <__bad_interrupt>
   36:	00 00       	nop
-  38:	21 c0       	rjmp	.+66     	; 0x7c <__bad_interrupt>
+  38:	16 c0       	rjmp	.+44     	; 0x66 <__bad_interrupt>
   3a:	00 00       	nop
-  3c:	1f c0       	rjmp	.+62     	; 0x7c <__bad_interrupt>
+  3c:	14 c0       	rjmp	.+40     	; 0x66 <__bad_interrupt>
   3e:	00 00       	nop
-  40:	1d c0       	rjmp	.+58     	; 0x7c <__bad_interrupt>
+  40:	12 c0       	rjmp	.+36     	; 0x66 <__bad_interrupt>
   42:	00 00       	nop
-  44:	1b c0       	rjmp	.+54     	; 0x7c <__bad_interrupt>
+  44:	10 c0       	rjmp	.+32     	; 0x66 <__bad_interrupt>
   46:	00 00       	nop
-  48:	19 c0       	rjmp	.+50     	; 0x7c <__bad_interrupt>
+  48:	0e c0       	rjmp	.+28     	; 0x66 <__bad_interrupt>
   4a:	00 00       	nop
-  4c:	17 c0       	rjmp	.+46     	; 0x7c <__bad_interrupt>
+  4c:	0c c0       	rjmp	.+24     	; 0x66 <__bad_interrupt>
   4e:	00 00       	nop
-  50:	15 c0       	rjmp	.+42     	; 0x7c <__bad_interrupt>
+  50:	0a c0       	rjmp	.+20     	; 0x66 <__bad_interrupt>
 	...
 
-00000054 <program__state1>:
+00000054 <program__progmemvar>:
   54:	ab 00                                               ..
 
 00000056 <__ctors_end>:
@@ -58,79 +58,38 @@ Disassembly of section .text:
   5c:	d8 e0       	ldi	r29, 0x08	; 8
   5e:	de bf       	out	0x3e, r29	; 62
   60:	cd bf       	out	0x3d, r28	; 61
+  62:	02 d0       	rcall	.+4      	; 0x68 <main>
+  64:	0c c0       	rjmp	.+24     	; 0x7e <_exit>
 
-00000062 <__do_copy_data>:
-  62:	10 e0       	ldi	r17, 0x00	; 0
+00000066 <__bad_interrupt>:
+  66:	cc cf       	rjmp	.-104    	; 0x0 <__vectors>
 
-00000064 <.Loc.1>:
-  64:	a0 e6       	ldi	r26, 0x60	; 96
+00000068 <main>:
+  68:	01 d0       	rcall	.+2      	; 0x6c <program__main>
+  6a:	0b c0       	rjmp	.+22     	; 0x82 <_etext>
 
-00000066 <.Loc.2>:
-  66:	b0 e0       	ldi	r27, 0x00	; 0
+0000006c <program__main>:
+  6c:	8f ef       	ldi	r24, 0xFF	; 255
+  6e:	87 bb       	out	0x17, r24	; 23
+  70:	e4 e5       	ldi	r30, 0x54	; 84
+  72:	f0 e0       	ldi	r31, 0x00	; 0
+  74:	e4 91       	lpm	r30, Z
+  76:	e8 bb       	out	0x18, r30	; 24
+  78:	78 94       	sei
 
-00000068 <.Loc.3>:
-  68:	ee ea       	ldi	r30, 0xAE	; 174
+0000007a <.L3>:
+  7a:	ff cf       	rjmp	.-2      	; 0x7a <.L3>
 
-0000006a <.Loc.4>:
-  6a:	f0 e0       	ldi	r31, 0x00	; 0
+0000007c <__vector_11>:
+  7c:	18 95       	reti
 
-0000006c <.Loc.5>:
-  6c:	02 c0       	rjmp	.+4      	; 0x72 <.L__do_copy_data_start>
+0000007e <_exit>:
+  7e:	f8 94       	cli
 
-0000006e <.L__do_copy_data_loop>:
-  6e:	05 90       	lpm	r0, Z+
+00000080 <__stop_program>:
+  80:	ff cf       	rjmp	.-2      	; 0x80 <__stop_program>
 
-00000070 <.Loc.7>:
-  70:	0d 92       	st	X+, r0
+Disassembly of section .garbage:
 
-00000072 <.L__do_copy_data_start>:
-  72:	a2 36       	cpi	r26, 0x62	; 98
-
-00000074 <.Loc.9>:
-  74:	b1 07       	cpc	r27, r17
-
-00000076 <.Loc.10>:
-  76:	d9 f7       	brne	.-10     	; 0x6e <.L__do_copy_data_loop>
-
-00000078 <L0^A>:
-  78:	0d d0       	rcall	.+26     	; 0x94 <main>
-  7a:	17 c0       	rjmp	.+46     	; 0xaa <_exit>
-
-0000007c <__bad_interrupt>:
-  7c:	c1 cf       	rjmp	.-126    	; 0x0 <__vectors>
-
-0000007e <_ada_main>:
-  7e:	0d c0       	rjmp	.+26     	; 0x9a <program__main>
-
-00000080 <adainit>:
-  80:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <main_E>
-  84:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <main_E+0x1>
-  88:	01 96       	adiw	r24, 0x01	; 1
-  8a:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <main_E+0x1>
-  8e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <main_E>
-  92:	08 95       	ret
-
-00000094 <main>:
-  94:	f5 df       	rcall	.-22     	; 0x80 <adainit>
-  96:	f3 cf       	rjmp	.-26     	; 0x7e <_ada_main>
-
-00000098 <__vector_11>:
-  98:	18 95       	reti
-
-0000009a <program__main>:
-  9a:	8f ef       	ldi	r24, 0xFF	; 255
-  9c:	87 bb       	out	0x17, r24	; 23
-  9e:	e4 e5       	ldi	r30, 0x54	; 84
-  a0:	f0 e0       	ldi	r31, 0x00	; 0
-  a2:	e4 91       	lpm	r30, Z
-  a4:	e8 bb       	out	0x18, r30	; 24
-  a6:	78 94       	sei
-
-000000a8 <.L4>:
-  a8:	ff cf       	rjmp	.-2      	; 0xa8 <.L4>
-
-000000aa <_exit>:
-  aa:	f8 94       	cli
-
-000000ac <__stop_program>:
-  ac:	ff cf       	rjmp	.-2      	; 0xac <__stop_program>
+00000082 <__do_copy_data>:
+  82:	08 95       	ret
