@@ -1,3 +1,1 @@
-- Write instructions on how to compile Ada code without using GPRbuild (using only the GCC compiler)
-- Finish writing the Makefile for compilation with only the GCC compiler
 - Pragma Allow_Integer_Address
